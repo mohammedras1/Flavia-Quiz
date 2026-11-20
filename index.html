@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#f5a0bd" />
+    <title>Flavia Quiz</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="petals" aria-hidden="true"></div>
+    <main class="app-shell">
+      <section id="welcome" class="screen welcome-screen active" aria-labelledby="welcome-title">
+        <div class="sparkle sparkle-one" aria-hidden="true">✦</div>
+        <div class="sparkle sparkle-two" aria-hidden="true">✿</div>
+        <div class="hero-flower" aria-hidden="true">
+          <span class="flower-face">ʕ•ᴗ•ʔ</span>
+        </div>
+
+        <p class="eyebrow">Das ultimative Freundinnen-Rätsel</p>
+        <h1 id="welcome-title">Flavia <em>Quiz</em></h1>
+        <p class="welcome-copy">
+          Wie gut kennst du Flavia wirklich? Beantworte die Fragen –
+          jede Runde enthüllt etwas Neues.
+        </p>
+
+        <div class="intro-card">
+          <span class="intro-icon" aria-hidden="true">♡</span>
+          <p><strong>20 verrückte Runden</strong><br />Von „klare Sache“ bis „Du kennst mich wirklich!“</p>
+        </div>
+
+        <button class="primary-button" id="start-button" type="button">
+          Quiz starten <span aria-hidden="true">→</span>
+        </button>
+      </section>
+
+      <section id="quiz" class="screen quiz-screen" aria-labelledby="question-text">
+        <header class="quiz-header">
+          <button class="brand-button" id="home-button" type="button" aria-label="Zurück zum Start">
+            F<span>♡</span>
+          </button>
+          <div class="round-label">
+            Runde <strong id="round-number">1</strong><span>/20</span>
+          </div>
+          <div class="quiz-tools">
+            <div class="streak" id="streak" aria-label="Aktuelle Treffer-Serie">0×</div>
+            <div class="lives" id="lives" aria-label="3 Leben"></div>
+            <button class="sound-button" id="sound-button" type="button" aria-label="Töne ausschalten" aria-pressed="true">♪</button>
+          </div>
+        </header>
+
+        <div class="progress-track" aria-hidden="true">
+          <div class="progress-fill" id="progress-fill"></div>
+        </div>
+        <div class="round-dots" id="round-dots" aria-label="Rundenfortschritt"></div>
+
+        <article class="question-card">
+          <div class="difficulty" id="difficulty">Einstieg · Süß & leicht</div>
+          <h2 id="question-text"></h2>
+          <div class="answers" id="answers"></div>
+        </article>
+
+        <div class="reaction-zone" aria-live="polite">
+          <div class="cat-peek" id="cat-peek" aria-hidden="true">
+            <span class="cat-ear left"></span>
+            <span class="cat-ear right"></span>
+            <span class="cat-face">•ᴗ•</span>
+          </div>
+          <div class="answer-sticker" id="answer-sticker">Super Antwort!</div>
+        </div>
+
+        <div class="flavia-bubble" id="flavia-bubble" aria-live="polite">
+          <span aria-hidden="true">F</span>
+          <p id="flavia-comment">Bereit für die erste Runde?</p>
+        </div>
+      </section>
+
+      <section id="result" class="screen result-screen" aria-labelledby="result-title">
+        <div class="result-confetti" aria-hidden="true"></div>
+        <header class="quiz-header">
+          <button class="brand-button" id="result-home-button" type="button" aria-label="Zurück zum Start">
+            F<span>♡</span>
+          </button>
+          <p class="result-heading">Ergebnis</p>
+          <div class="tiny-heart" aria-hidden="true">♥</div>
+        </header>
+
+        <div class="result-card">
+          <div class="avatar" aria-hidden="true">
+            <div class="avatar-bow"></div>
+            <span>ʕ♡ᴗ♡ʔ</span>
+          </div>
+          <p class="result-kicker" id="result-kicker">Verrückt! Du kennst mich...</p>
+          <h2 id="result-title">Fast perfekt!</h2>
+
+          <div class="score-ring" id="score-ring">
+            <div>
+              <strong id="score-value">7</strong>
+              <span id="score-total">von 20 Runden</span>
+            </div>
+          </div>
+
+          <p class="recognition" id="recognition">Du erkennst mich ziemlich gut.</p>
+
+          <div class="stats">
+            <div>
+              <span class="stat-value" id="flavia-mentions">7</span>
+              <span class="stat-label">Runden geschafft</span>
+            </div>
+            <div>
+              <span class="stat-value" id="accuracy-value">70%</span>
+              <span class="stat-label">Erkennung</span>
+            </div>
+          </div>
+
+          <div class="extra-stats">
+            <div>
+              <span id="best-streak">0</span>
+              <small>Beste Serie</small>
+            </div>
+            <div>
+              <span id="best-score">0/20</span>
+              <small>Persönlicher Rekord</small>
+            </div>
+          </div>
+
+          <div class="final-letter" id="final-letter">
+            <span aria-hidden="true">F</span>
+            <p id="final-message"></p>
+          </div>
+
+          <div class="relationship">
+            <div class="relationship-label">
+              <span>Fremde</span>
+              <span>Seelenverwandte</span>
+            </div>
+            <div class="relationship-track">
+              <div class="relationship-fill" id="relationship-fill"></div>
+              <span class="relationship-marker" id="relationship-marker">♡</span>
+            </div>
+          </div>
+
+          <div class="result-actions">
+            <button class="primary-button" id="restart-button" type="button">
+              Nochmal spielen <span aria-hidden="true">↻</span>
+            </button>
+            <button class="share-button" id="share-button" type="button" aria-label="Ergebnis teilen">
+              <span aria-hidden="true">♡</span> Teilen
+            </button>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>
