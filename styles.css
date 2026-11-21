@@ -103,39 +103,38 @@ button {
 }
 
 .flower-face {
-  width: 48px;
-  height: 48px;
-  border: 3px solid #fff7da;
+  width: 43%;
+  height: 43%;
   border-radius: 50%;
   background: #ffe27a;
-  box-shadow: 0 3px 8px rgba(144, 91, 61, .18);
   position: relative;
   z-index: 2;
+  font-size: clamp(20px, 5.2dvh, 48px);
 }
 
 .flower-eye {
   position: absolute;
-  top: 14px;
-  left: 12px;
-  width: 4px;
-  height: 6px;
+  top: 29%;
+  left: 25%;
+  width: 8%;
+  height: 12%;
   border-radius: 50%;
   background: #704758;
 }
 
 .flower-eye:nth-child(2) {
-  right: 12px;
+  right: 25%;
   left: auto;
 }
 
 .flower-smile {
   position: absolute;
-  top: 22px;
-  left: 15px;
-  width: 12px;
-  height: 7px;
-  border-bottom: 2px solid #704758;
-  border-radius: 0 0 12px 12px;
+  top: 46%;
+  left: 31%;
+  width: 26%;
+  height: 16%;
+  border-bottom: .045em solid #704758;
+  border-radius: 0 0 .25em .25em;
 }
 
 .sparkle {
@@ -1497,8 +1496,8 @@ button {
   }
 
   .hero-flower {
-    width: 78px;
-    height: 78px;
+    width: clamp(64px, 12dvh, 78px);
+    height: clamp(64px, 12dvh, 78px);
     margin-bottom: 10px;
   }
 
