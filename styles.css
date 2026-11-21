@@ -88,23 +88,54 @@ button {
   display: grid;
   place-items: center;
   margin-bottom: 18px;
-  border: 8px solid rgba(255, 255, 255, .65);
   border-radius: 50%;
   background:
-    radial-gradient(circle at 50% 50%, #fff 0 21%, transparent 22%),
-    radial-gradient(circle at 50% 16%, #f39aba 0 22%, transparent 23%),
-    radial-gradient(circle at 84% 50%, #f39aba 0 22%, transparent 23%),
-    radial-gradient(circle at 50% 84%, #f39aba 0 22%, transparent 23%),
-    radial-gradient(circle at 16% 50%, #f39aba 0 22%, transparent 23%);
-  box-shadow: 0 14px 35px rgba(196, 89, 133, .18);
+    radial-gradient(circle at 50% 18%, #f39aba 0 16%, transparent 17%),
+    radial-gradient(circle at 74% 26%, #f39aba 0 16%, transparent 17%),
+    radial-gradient(circle at 82% 50%, #f39aba 0 16%, transparent 17%),
+    radial-gradient(circle at 74% 74%, #f39aba 0 16%, transparent 17%),
+    radial-gradient(circle at 50% 82%, #f39aba 0 16%, transparent 17%),
+    radial-gradient(circle at 26% 74%, #f39aba 0 16%, transparent 17%),
+    radial-gradient(circle at 18% 50%, #f39aba 0 16%, transparent 17%),
+    radial-gradient(circle at 26% 26%, #f39aba 0 16%, transparent 17%);
+  filter: drop-shadow(0 10px 12px rgba(196, 89, 133, .2));
   animation: float 3.2s ease-in-out infinite;
 }
 
 .flower-face {
-  font-size: 27px;
-  color: #b54d78;
-  transform: rotate(-4deg);
+  width: 48px;
+  height: 48px;
+  border: 3px solid #fff7da;
+  border-radius: 50%;
+  background: #ffe27a;
+  box-shadow: 0 3px 8px rgba(144, 91, 61, .18);
+  position: relative;
   z-index: 2;
+}
+
+.flower-eye {
+  position: absolute;
+  top: 14px;
+  left: 12px;
+  width: 4px;
+  height: 6px;
+  border-radius: 50%;
+  background: #704758;
+}
+
+.flower-eye:nth-child(2) {
+  right: 12px;
+  left: auto;
+}
+
+.flower-smile {
+  position: absolute;
+  top: 22px;
+  left: 15px;
+  width: 12px;
+  height: 7px;
+  border-bottom: 2px solid #704758;
+  border-radius: 0 0 12px 12px;
 }
 
 .sparkle {
@@ -1025,45 +1056,438 @@ button {
   }
 }
 
-@media (max-width: 600px) {
+@media (max-width: 600px), (max-height: 500px) and (hover: none) {
+  body {
+    height: 100vh;
+    height: 100dvh;
+    min-height: 0;
+    overflow: hidden;
+  }
+
+  .app-shell {
+    height: 100%;
+    min-height: 0;
+  }
+
+  .screen {
+    height: 100%;
+    min-height: 0;
+    overflow: hidden;
+  }
+
   .welcome-screen {
-    padding-top: 28px;
+    justify-content: center;
+    padding: clamp(12px, 3dvh, 24px) 20px;
   }
 
   .hero-flower {
-    width: 94px;
-    height: 94px;
+    width: clamp(64px, 12dvh, 94px);
+    height: clamp(64px, 12dvh, 94px);
+    margin-bottom: clamp(8px, 2dvh, 18px);
   }
 
   .welcome-screen h1 {
     letter-spacing: -3px;
   }
 
+  .welcome-copy {
+    margin: clamp(10px, 2dvh, 18px) auto;
+    font-size: 15px;
+  }
+
+  .intro-card {
+    margin-bottom: clamp(12px, 2.5dvh, 20px);
+  }
+
   .quiz-screen,
   .result-screen {
-    min-height: 100svh;
-    padding: 14px 14px 20px;
+    min-height: 0;
+    padding: 10px 12px;
+  }
+
+  .quiz-header {
+    height: 40px;
+    grid-template-columns: 40px minmax(0, 1fr) auto;
+    margin-bottom: 8px;
+  }
+
+  .brand-button {
+    width: 36px;
+    height: 36px;
+    font-size: 20px;
+  }
+
+  .quiz-tools {
+    gap: 5px;
+  }
+
+  .streak {
+    min-width: 34px;
+    height: 26px;
+  }
+
+  .sound-button {
+    width: 27px;
+    height: 27px;
+  }
+
+  .lives {
+    gap: 3px;
+  }
+
+  .life {
+    font-size: 16px;
+  }
+
+  .round-dots {
+    min-height: 16px;
+    gap: 4px;
+    margin: 4px 0 0;
+  }
+
+  .round-dot {
+    width: 4px;
+    height: 4px;
+  }
+
+  .round-dot.current {
+    width: 14px;
   }
 
   .question-card {
+    min-height: 0;
+    flex: 1 1 auto;
+    margin-top: 8px;
+    padding: clamp(10px, 2dvh, 16px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     border-radius: 24px;
   }
 
+  .difficulty {
+    align-self: center;
+    margin-bottom: 8px;
+    padding: 5px 9px;
+    font-size: 9px;
+    letter-spacing: .7px;
+  }
+
+  .question-card h2 {
+    min-height: 0;
+    margin: 0 0 12px;
+    font-size: clamp(22px, 6vw, 30px);
+    line-height: 1.12;
+  }
+
   .answers {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px;
   }
 
   .answer-button {
-    min-height: 54px;
+    min-height: clamp(40px, 7dvh, 50px);
+    padding: 5px 7px;
+    border-radius: 13px;
+    font-size: 12px;
+    line-height: 1.2;
+  }
+
+  .reaction-zone {
+    min-height: 36px;
+    flex: 0 0 auto;
+  }
+
+  .cat-peek {
+    width: 58px;
+    height: 40px;
+  }
+
+  .answer-sticker {
+    margin-bottom: 4px;
+    padding: 7px 10px;
+    font-size: 11px;
   }
 
   .flavia-bubble {
-    margin-top: 10px;
-    min-height: 82px;
+    flex: 0 0 auto;
+    min-height: 48px;
+    margin-top: 6px;
+    padding: 7px 9px;
+    gap: 8px;
+    border-radius: 16px;
+  }
+
+  .flavia-bubble > span {
+    width: 32px;
+    height: 32px;
+  }
+
+  .flavia-bubble p {
+    font-size: 12px;
+    line-height: 1.3;
   }
 
   .result-card {
-    margin-top: 56px;
+    flex: 1 1 auto;
+    min-height: 0;
+    margin-top: 24px;
+    padding: 8px 12px 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-radius: 26px;
+  }
+
+  .result-screen .quiz-header {
+    flex: 0 0 auto;
+    margin-bottom: 0;
+  }
+
+  .avatar {
+    width: 58px;
+    height: 58px;
+    flex: 0 0 auto;
+    margin: -42px auto 4px;
+    border-width: 4px;
+  }
+
+  .avatar span {
+    font-size: 15px;
+  }
+
+  .avatar-bow {
+    transform: scale(.75) rotate(-8deg);
+    transform-origin: bottom left;
+  }
+
+  .result-kicker {
+    margin-bottom: 2px;
+    font-size: 9px;
+    letter-spacing: .6px;
+  }
+
+  .result-card h2 {
+    margin: 0 0 5px;
+    font-size: clamp(22px, 6vw, 32px);
+    line-height: 1.08;
+  }
+
+  .score-ring {
+    width: 84px;
+    height: 84px;
+    flex: 0 0 auto;
+    margin: 0 auto 4px;
+  }
+
+  .score-ring strong {
+    font-size: 36px;
+  }
+
+  .score-ring span {
+    margin-top: 4px;
+    font-size: 9px;
+  }
+
+  .recognition {
+    min-height: 0;
+    margin: 4px 0 6px;
+    font-size: 12px;
+    line-height: 1.25;
+  }
+
+  .stats {
+    flex: 0 0 auto;
+    margin: 4px 0 8px;
+  }
+
+  .stats div {
+    padding: 6px;
+  }
+
+  .stat-value {
+    font-size: 20px;
+  }
+
+  .stat-label {
+    font-size: 9px;
+    letter-spacing: .4px;
+  }
+
+  .extra-stats {
+    flex: 0 0 auto;
+    gap: 6px;
+    margin: -3px 0 7px;
+  }
+
+  .extra-stats div {
+    padding: 5px;
+  }
+
+  .extra-stats span {
+    font-size: 14px;
+  }
+
+  .extra-stats small {
+    font-size: 8px;
+  }
+
+  .final-letter {
+    flex: 0 0 auto;
+    gap: 6px;
+    margin-bottom: 7px;
+    padding: 6px 8px;
+  }
+
+  .final-letter > span {
+    width: 28px;
+    height: 28px;
+  }
+
+  .final-letter p {
+    font-size: 11px;
+    line-height: 1.25;
+  }
+
+  .relationship {
+    flex: 0 0 auto;
+    margin: 0 0 10px;
+  }
+
+  .relationship-label {
+    margin-bottom: 4px;
+    font-size: 8px;
+  }
+
+  .relationship-track {
+    height: 6px;
+  }
+
+  .relationship-marker {
+    width: 22px;
+    height: 22px;
+    border-width: 3px;
+  }
+
+  .result-actions {
+    flex: 0 0 auto;
+    grid-template-columns: minmax(0, 1fr) 78px;
+    gap: 6px;
+  }
+
+  .result-actions .primary-button {
+    min-width: 0;
+    padding: 10px 12px;
+    font-size: 12px;
+  }
+
+  .share-button {
+    min-height: 40px;
+  }
+}
+
+@media (max-width: 600px) and (max-height: 600px), (max-height: 500px) and (hover: none) {
+  .welcome-screen {
+    padding-top: 8px;
+    padding-bottom: 8px;
+  }
+
+  .welcome-screen h1 {
+    font-size: clamp(42px, 10dvh, 52px);
+  }
+
+  .eyebrow {
+    font-size: 10px;
+    letter-spacing: 1.6px;
+  }
+
+  .welcome-copy {
+    margin: 8px auto;
+    font-size: 14px;
+  }
+
+  .intro-card {
+    padding: 8px 12px;
+  }
+
+  .primary-button {
+    padding: 12px 20px;
+  }
+
+  .round-dots {
+    display: none;
+  }
+
+  .question-card {
+    margin-top: 4px;
+    padding: 8px;
+  }
+
+  .difficulty {
+    margin-bottom: 5px;
+  }
+
+  .question-card h2 {
+    margin-bottom: 8px;
+    font-size: 21px;
+  }
+
+  .answer-button {
+    min-height: 36px;
+    padding: 4px 5px;
+    font-size: 11px;
+  }
+
+  .reaction-zone {
+    min-height: 26px;
+  }
+
+  .flavia-bubble {
+    min-height: 40px;
+    margin-top: 4px;
+    padding: 5px 7px;
+  }
+
+  .flavia-bubble > span {
+    width: 28px;
+    height: 28px;
+  }
+
+  .flavia-bubble p {
+    font-size: 11px;
+  }
+
+  .result-card {
+    margin-top: 18px;
+    padding: 6px 10px 8px;
+  }
+
+  .score-ring {
+    width: 72px;
+    height: 72px;
+  }
+
+  .score-ring strong {
+    font-size: 32px;
+  }
+
+  .recognition,
+  .final-letter p {
+    display: -webkit-box;
+    overflow: hidden;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+  }
+
+  .flavia-bubble p {
+    display: -webkit-box;
+    overflow: hidden;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+  }
+
+  .relationship {
+    margin-bottom: 7px;
   }
 }
 
